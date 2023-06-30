@@ -51,6 +51,7 @@ function UserProfileScreen({
         // eslint-disable-next-line react/no-unstable-nested-components
         headerRight: () => (
           <HeaderIconButton
+            accessibilityLabel="Profile settings"
             icon={<IconSettings size={24} color={theme.colors.app.accent} />}
             onPress={() => navigation.push("Settings")}
           />

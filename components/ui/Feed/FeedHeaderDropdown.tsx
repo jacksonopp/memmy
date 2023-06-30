@@ -29,7 +29,7 @@ function FeedHeaderDropdown({ enabled }: HeaderDropdownProps) {
   };
 
   return (
-    <Pressable onPress={onPress}>
+    <Pressable onPress={onPress} accessible accessibilityHint="Change account">
       <HStack justifyContent="center" alignItems="center" space="3">
         <VStack justifyContent="center" alignItems="center">
           <Text fontSize="16" fontWeight="bold">

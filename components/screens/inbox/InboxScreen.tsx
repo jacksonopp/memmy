@@ -27,6 +27,7 @@ function InboxScreen({
       // eslint-disable-next-line react/no-unstable-nested-components
       headerRight: () => (
         <HeaderIconButton
+          accessibilityLabel="Mark all messages as read"
           icon={<IconMailOpened size={24} color={theme.colors.app.accent} />}
           onPress={inbox.doReadAll}
         />

@@ -221,10 +221,15 @@ function FeedView({ feed, community = false, header }: FeedViewProps) {
     return (
       <HStack space={1}>
         <HeaderIconButton
+          accessibilityLabel={`Feed sorted by ${feed.sort}`}
+          accessibilityHint="Change the feed filter"
           icon={SortIconType[feed.sort]}
           onPress={onSortPress}
         />
-        <HeaderIconButton icon={<IconDots />} onPress={onEllipsisButtonPress} />
+        <HeaderIconButton
+         accessibilityLabel={community ? undefined : `Viewing ${feed.listingType} posts`}
+         accessibilityHint="Change feed source"
+         icon={<IconDots />} onPress={onEllipsisButtonPress} />
       </HStack>
     );
   };
