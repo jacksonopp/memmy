@@ -1,6 +1,6 @@
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import { HStack, Text, useTheme, VStack } from "native-base";
-import React, { useEffect } from "react";
+import { HStack, Input, Text, useTheme, VStack } from "native-base";
+import React, { useEffect, useMemo, useState } from "react";
 import FastImage from "react-native-fast-image";
 import {
   IconEye,
@@ -16,6 +16,9 @@ import CustomButton from "../../ui/buttons/CustomButton";
 import FeedView from "../../ui/Feed/FeedView";
 import LoadingErrorView from "../../ui/Loading/LoadingErrorView";
 import NotFoundView from "../../ui/Loading/NotFoundView";
+import useDebounce from "../../hooks/utility/useDebounce";
+import { TextInput } from "react-native-gesture-handler";
+import SearchBar from "../../ui/search/SearchBar";
 
 function FeedsCommunityScreen({
   route,
@@ -47,6 +50,12 @@ function FeedsCommunityScreen({
     communityFeed.feed.doLoad();
   }, []);
 
+  const [term, setTerm] = useState("");
+
+  // useEffect(() => {
+  //   console.log(term);
+  // }, [term]);
+
   if (communityFeed.feed.communityNotFound) {
     return <NotFoundView />;
   }
@@ -60,7 +69,8 @@ function FeedsCommunityScreen({
       return null;
 
     return (
-      <VStack pt={10} pb={5} px={5}>
+      <VStack pt={3} pb={5} px={5}>
+        <SearchBar query={term} setQuery={setTerm} autoFocus={false} />
         <HStack alignItems="center" space={5}>
           {communityFeed.feed.community.community.icon ? (
             <FastImage
